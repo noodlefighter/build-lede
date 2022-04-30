@@ -1,0 +1,3 @@
+[submodule "lede"]
+	path = lede
+	url = git@github.com:noodlefighter/lede.git
