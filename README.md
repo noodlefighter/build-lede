@@ -45,6 +45,7 @@ $ make download -j8
 $ vagrant ssh
 
 (虚拟机内)
+$ source $HOME/scripts/setenv
 $ cd $HOME/lede
 $ make -j8
 ```
