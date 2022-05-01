@@ -1,5 +1,12 @@
 Usage:
 
+依赖的工具
+
+- vagrant
+- vagrant scp plugin (安装命令 vagrant plugin install vagrant-scp)
+- virtualbox
+
+
 初始化环境
 
 ```
@@ -18,7 +25,7 @@ $ setproxy
 $ vagrant up
 ```
 
-可以在宿主上先完成feeds拉取、下载源码包，当然也可以在虚拟环境中做
+宿主上完成feeds拉取、下载源码包
 
 ```
 
