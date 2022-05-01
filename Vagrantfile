@@ -5,7 +5,7 @@
 # boxes: https://app.vagrantup.com/boxes/search
 #
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/xenial64"
+    config.vm.box = "ubuntu/focal64"
 
     config.vm.provider "virtualbox" do |v|
         v.memory = 8192
@@ -19,8 +19,10 @@ Vagrant.configure("2") do |config|
     # config.ssh.password = 'vagrant'
 
     config.vm.provision :shell, path: "bootstrap.sh"
-    config.vm.synced_folder "../lede", "/home/vagrant/lede", 
+
+    config.vm.synced_folder "./scripts", "/home/vagrant/scripts"
+    config.vm.synced_folder "./lede", "/home/vagrant/lede",
         type: "rsync", 
-        rsync__exclude: [".git/", "build_dir/", "staging_dir/"]
-    #config.vm.synced_folder "../workspace", "/home/vagrant/workspace" 
+        rsync__exclude: [".git/", "build_dir/", "staging_dir/", "tmp/"],
+        rsync__args: ["--archive", "--delete", "--links", "--safe-links"]
 end
