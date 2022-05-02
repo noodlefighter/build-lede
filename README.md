@@ -25,39 +25,35 @@ $ setproxy
 $ vagrant up
 ```
 
-宿主上完成feeds拉取、下载源码包
-
-```
-
-$ cd lede/
-
-$ ./scripts/feeds update -a
-$ ./scripts/feeds install -a
-
-编辑配置，下载源码包
-$ make menuconfig
-$ make download -j8
-```
-
-进入虚拟机环境，执行构建
+进入虚拟机环境，构建
 
 ```
 $ vagrant ssh
 
 (虚拟机内)
 $ source $HOME/scripts/setenv
+配置代理
+$ setproxy
 $ cd $HOME/lede
+拉取feeds
+$ ./scripts/feeds update -a
+$ ./scripts/feeds install -a
+编辑配置，下载源码包
+$ make menuconfig
+$ make download -j8
 $ make -j8
 ```
 
+
+常用操作：
+```
+手动执行同步
+$ vagrant rsync
 取出构建结果
-
-```
-$ ./scripts/do_sync.sh
-```
-
-关闭+删除虚拟机
-```
+$ ./scripts/fetch.sh
+关闭虚拟机
 $ vagrant halt
+销毁虚拟机
 $ vagrant destroy
 ```
+
