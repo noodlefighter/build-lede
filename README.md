@@ -15,12 +15,8 @@ Usage:
 $ cd this_repo/
 $ git submodule update --init --recursive
 
-可选，如果需要代理，修改PROXY_HOST为自己的代理
-$ vi ./scripts/setenv
 展开环境变量
 $ source ./scripts/setenv
-可选，如果需要代理，执行这条，同理在虚拟机环境内也可以这样操作
-$ setproxy
 展开虚拟机环境
 $ vagrant up
 ```
@@ -33,14 +29,14 @@ $ vagrant ssh
 (虚拟机内)
 $ source $HOME/scripts/setenv
 配置代理
-$ setproxy
-$ cd $HOME/lede
+$ vim $HOME/.proxychains/proxychains.conf
 拉取feeds
 $ ./scripts/feeds update -a
 $ ./scripts/feeds install -a
-编辑配置，下载源码包
+编辑配置
 $ make menuconfig
-$ make download -j8
+先挂代理下载源码包，再编译
+$ proxychains make download -j8
 $ make -j8
 ```
 

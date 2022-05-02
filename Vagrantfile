@@ -25,4 +25,7 @@ Vagrant.configure("2") do |config|
         type: "rsync", 
         rsync__exclude: [".git/", "build_dir/", "staging_dir/", "tmp/"],
         rsync__args: ["--archive", "--links", "--safe-links"]
+    config.vm.synced_folder "./home", "/home/vagrant/",
+        type: "rsync", 
+        rsync__args: ["--archive", "--links", "--safe-links"]
 end
