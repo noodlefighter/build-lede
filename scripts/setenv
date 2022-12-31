@@ -1,5 +1,5 @@
 
-export PROXY_HOST=192.168.0.169
+export PROXY_HOST=192.168.1.171
 
 setproxy () {
 	export proxy="http://$PROXY_HOST:7890"
@@ -15,6 +15,4 @@ unsetproxy () {
 	unset ftp_proxy
 	unset no_proxy
 }
-
-export VAGRANT_EXPERIMENTAL="disks"
 
