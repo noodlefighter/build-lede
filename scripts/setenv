@@ -1,5 +1,5 @@
 
-export PROXY_HOST=192.168.1.171
+export PROXY_HOST=host.docker.internal
 
 setproxy () {
 	export proxy="http://$PROXY_HOST:7890"
